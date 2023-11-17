@@ -1,0 +1,4550 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../objects/playlist/">
+      
+      
+        <link rel="next" href="../../themepack_creation/">
+      
+      
+      <link rel="icon" href="../../../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.9">
+    
+    
+      
+        <title>OpenVK API description - OpenVK Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.78cf6014.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#openvk-api-description" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="OpenVK Documentation" class="md-header__button md-logo" aria-label="OpenVK Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            OpenVK Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              OpenVK API description
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="grey" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/openvk/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openvk/docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="OpenVK Documentation" class="md-nav__button md-logo" aria-label="OpenVK Documentation" data-md-component="logo">
+      
+  <img src="../../../../assets/logo.svg" alt="logo">
+
+    </a>
+    OpenVK Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/openvk/docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    openvk/docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Chandler
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Chandler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../chandler/about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About Chandler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../chandler/installing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing Chandler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    OpenVK Engine
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            OpenVK Engine
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About OpenVK Engine
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ru
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            ru
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1_1" id="__nav_3_2_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Объекты
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Объекты
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/audio_genres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Жанры аудиозаписей
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Аудиозапись
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Заметка
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/photo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Фотография
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/playlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Плейлист
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/objects/topic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Обсуждение
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/api/description/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Описание OpenVK API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ru/themepack_creation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Как создать тему?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    en
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            en
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1_1" id="__nav_3_3_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Objects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Objects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/audio_genres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio Genres
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/audio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Audio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects/playlist/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Playlist
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    OpenVK API description
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    OpenVK API description
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getprofileinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getProfileInfo 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getInfo 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setonline" class="md-nav__link">
+    <span class="md-ellipsis">
+      setOnline 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setoffline" class="md-nav__link">
+    <span class="md-ellipsis">
+      setOffline 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getapppermissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAppPermissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcounters" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCounters 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#islagtrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      isLagtrain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrecommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      getRecommendations 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpopular" class="md-nav__link">
+    <span class="md-ellipsis">
+      getPopular 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      getFeed 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      search 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCount 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlyrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLyrics 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beacon" class="md-nav__link">
+    <span class="md-ellipsis">
+      beacon 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setbroadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      setBroadcast 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbroadcastlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      getBroadcastList 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      restore 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getalbums" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchalbums" class="md-nav__link">
+    <span class="md-ellipsis">
+      searchAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      addAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      editAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletealbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#movetoalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      moveToAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copytoalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      copyToAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removefromalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeFromAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bookmarkalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      bookmarkAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbookmarkalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      unbookmarkAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Board
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Board">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      addTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closetopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      closeTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletetopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edittopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      editTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      fixTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettopics" class="md-nav__link">
+    <span class="md-ellipsis">
+      getTopics 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      openTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restorecomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      restoreComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unfixtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      unfixTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Friends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      getRequests 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlists" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLists 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-deletelist-editlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit, deleteList, editList 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arefriends" class="md-nav__link">
+    <span class="md-ellipsis">
+      areFriends 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gifts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gifts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gifts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send" class="md-nav__link">
+    <span class="md-ellipsis">
+      send 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcategories" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCategories 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getgiftsincategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getGiftsInCategory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembers" class="md-nav__link">
+    <span class="md-ellipsis">
+      getMembers 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      getSettings 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ismember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isMember 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      join 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      leave 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      remove 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#likes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Likes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Likes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isliked" class="md-nav__link">
+    <span class="md-ellipsis">
+      isLiked 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      send 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      restore 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      getConversations 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconversationsbyid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getConversationsById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gethistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getHistory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlongpollhistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLongPollHistory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlongpollserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLongPollServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ovk-aka-openvk-specific-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ovk (aka OpenVK specific methods)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ovk (aka OpenVK specific methods)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chickenwings" class="md-nav__link">
+    <span class="md-ellipsis">
+      chickenWings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aboutinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      aboutInstance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Photos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Photos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      createAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editalbum_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      editAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getalbums_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletealbum_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getallcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAllComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getall" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAll 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getuploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getownerphotouploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getOwnerPhotoUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getwalluploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getWallUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    <span class="md-ellipsis">
+      save
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saveownerphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      saveOwnerPhoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#savewallphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      saveWallPhoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addvote" class="md-nav__link">
+    <span class="md-ellipsis">
+      addVote 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletevote" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteVote 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      set 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utils
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getservertime" class="md-nav__link">
+    <span class="md-ellipsis">
+      getServerTime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfollowers" class="md-nav__link">
+    <span class="md-ellipsis">
+      getFollowers 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wall
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    <span class="md-ellipsis">
+      post 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repost" class="md-nav__link">
+    <span class="md-ellipsis">
+      repost 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#newsfeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsfeed
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Newsfeed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getglobal" class="md-nav__link">
+    <span class="md-ellipsis">
+      getGlobal 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../themepack_creation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to create a Themepack?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../centos8_installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installing OpenVK on CentOS 8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ton_integration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    TON integration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authorization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Account
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Account">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getprofileinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getProfileInfo 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      getInfo 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setonline" class="md-nav__link">
+    <span class="md-ellipsis">
+      setOnline 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setoffline" class="md-nav__link">
+    <span class="md-ellipsis">
+      setOffline 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getapppermissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAppPermissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcounters" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCounters 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Audio
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Audio">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#islagtrain" class="md-nav__link">
+    <span class="md-ellipsis">
+      isLagtrain
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrecommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      getRecommendations 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getpopular" class="md-nav__link">
+    <span class="md-ellipsis">
+      getPopular 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      getFeed 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      search 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcount" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCount 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlyrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLyrics 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#beacon" class="md-nav__link">
+    <span class="md-ellipsis">
+      beacon 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setbroadcast" class="md-nav__link">
+    <span class="md-ellipsis">
+      setBroadcast 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbroadcastlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      getBroadcastList 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    <span class="md-ellipsis">
+      restore 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getalbums" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searchalbums" class="md-nav__link">
+    <span class="md-ellipsis">
+      searchAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      addAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      editAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletealbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#movetoalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      moveToAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copytoalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      copyToAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removefromalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      removeFromAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bookmarkalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      bookmarkAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unbookmarkalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      unbookmarkAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board" class="md-nav__link">
+    <span class="md-ellipsis">
+      Board
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Board">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#addtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      addTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#closetopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      closeTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletetopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edittopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      editTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      fixTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettopics" class="md-nav__link">
+    <span class="md-ellipsis">
+      getTopics 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opentopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      openTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restorecomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      restoreComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unfixtopic" class="md-nav__link">
+    <span class="md-ellipsis">
+      unfixTopic 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#friends" class="md-nav__link">
+    <span class="md-ellipsis">
+      Friends
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Friends">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getrequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      getRequests 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlists" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLists 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-deletelist-editlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit, deleteList, editList 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arefriends" class="md-nav__link">
+    <span class="md-ellipsis">
+      areFriends 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gifts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gifts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Gifts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send" class="md-nav__link">
+    <span class="md-ellipsis">
+      send 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcategories" class="md-nav__link">
+    <span class="md-ellipsis">
+      getCategories 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getgiftsincategory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getGiftsInCategory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Groups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getmembers" class="md-nav__link">
+    <span class="md-ellipsis">
+      getMembers 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsettings" class="md-nav__link">
+    <span class="md-ellipsis">
+      getSettings 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ismember" class="md-nav__link">
+    <span class="md-ellipsis">
+      isMember 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      join 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#leave" class="md-nav__link">
+    <span class="md-ellipsis">
+      leave 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove" class="md-nav__link">
+    <span class="md-ellipsis">
+      remove 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#likes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Likes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Likes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#isliked" class="md-nav__link">
+    <span class="md-ellipsis">
+      isLiked 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#send_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      send 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      restore 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconversations" class="md-nav__link">
+    <span class="md-ellipsis">
+      getConversations 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getconversationsbyid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getConversationsById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gethistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getHistory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlongpollhistory" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLongPollHistory 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlongpollserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLongPollServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      add 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ovk-aka-openvk-specific-methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ovk (aka OpenVK specific methods)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ovk (aka OpenVK specific methods)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      version
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test" class="md-nav__link">
+    <span class="md-ellipsis">
+      test
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chickenwings" class="md-nav__link">
+    <span class="md-ellipsis">
+      chickenWings
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aboutinstance" class="md-nav__link">
+    <span class="md-ellipsis">
+      aboutInstance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#photos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Photos
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Photos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createalbum" class="md-nav__link">
+    <span class="md-ellipsis">
+      createAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#editalbum_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      editAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getalbums_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAlbums 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletealbum_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteAlbum 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      edit 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getallcomments" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAllComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getall" class="md-nav__link">
+    <span class="md-ellipsis">
+      getAll 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getuploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getownerphotouploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getOwnerPhotoUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getwalluploadserver" class="md-nav__link">
+    <span class="md-ellipsis">
+      getWallUploadServer 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save" class="md-nav__link">
+    <span class="md-ellipsis">
+      save
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saveownerphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      saveOwnerPhoto
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#savewallphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      saveWallPhoto
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#polls" class="md-nav__link">
+    <span class="md-ellipsis">
+      Polls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Polls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#addvote" class="md-nav__link">
+    <span class="md-ellipsis">
+      addVote 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletevote" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteVote 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#status" class="md-nav__link">
+    <span class="md-ellipsis">
+      Status
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Status">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#set" class="md-nav__link">
+    <span class="md-ellipsis">
+      set 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utils" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utils
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getservertime" class="md-nav__link">
+    <span class="md-ellipsis">
+      getServerTime
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Users
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Users">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      get
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfollowers" class="md-nav__link">
+    <span class="md-ellipsis">
+      getFollowers 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      search
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wall" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wall
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wall">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbyid_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      getById 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#post" class="md-nav__link">
+    <span class="md-ellipsis">
+      post 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#repost" class="md-nav__link">
+    <span class="md-ellipsis">
+      repost 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#createcomment_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      createComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deletecomment_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      deleteComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomment" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComment 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcomments_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      getComments 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#newsfeed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Newsfeed
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Newsfeed">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      get 🔰
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getglobal" class="md-nav__link">
+    <span class="md-ellipsis">
+      getGlobal 🔰
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="openvk-api-description">OpenVK API description<a class="headerlink" href="#openvk-api-description" title="Permanent link">&para;</a></h1>
+<p>OpenVK API is based on VKontakte's API for compatibility. If you want to improve the API, then read <a href="https://github.com/openvk/openvk/blob/master/VKAPI/README.md">this page</a>.</p>
+<p>To call the function, you need to go to <code>{YOUR DOMAIN}/method/</code> URL, and then, the function name, for example: <code>{YOUR DOMAIN}/method/Account.getProfileInfo</code>. The server will return JSON data. You can use GET or POST to send the Data.</p>
+<p>🔰 above the function name means it requires authorization.</p>
+<h2 id="authorization">Authorization<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
+<p>To get token, you should call the "token" page:</p>
+<p><code>{YOUR DOMAIN}/token?username={YOUR USERNAME}&amp;password={YOUR PASSWORD}&amp;grant_type=password</code></p>
+<p>You'll get a response like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;access_token&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;THERE IS A TOKEN. A LONG TOKEN ACTUALLY&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;expires_in&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you need to call the function that requires a token, just put the <code>access_token</code> into your GET or POST request.</p>
+<p>If you have two-factor authorization turned on, add a <code>code</code> field to your POST request and fill it with, you guessed it, authorization code.</p>
+<h2 id="account">Account<a class="headerlink" href="#account" title="Permanent link">&para;</a></h2>
+<h3 id="getprofileinfo"><code>getProfileInfo</code> 🔰<a class="headerlink" href="#getprofileinfo" title="Permanent link">&para;</a></h3>
+<p>Returns the info about account.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;first_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vladimir&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;last_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Barinov&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;home_town&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Moscow&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Status example&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bdate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.1.1970&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;bdate_visibility&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;phone&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;+420 ** *** 228&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;relation&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;sex&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><em>Some fields are faked for VK API Compatibility</em></p>
+<h3 id="getinfo"><code>getInfo</code> 🔰<a class="headerlink" href="#getinfo" title="Permanent link">&para;</a></h3>
+<p><em>This is a dummy function</em></p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;2fa_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CZ&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;eu_user&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;https_required&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;intro&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;community_comments&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_live_streaming_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;is_new_live_streaming_enabled&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;lang&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;no_wall_replies&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;own_posts_default&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="setonline"><code>setOnline</code> 🔰<a class="headerlink" href="#setonline" title="Permanent link">&para;</a></h3>
+<p>Set the online status to current. Always returns <code>1</code>.</p>
+<h3 id="setoffline"><code>setOffline</code> 🔰<a class="headerlink" href="#setoffline" title="Permanent link">&para;</a></h3>
+<p>Dummy function, always returns <code>1</code>.</p>
+<h3 id="getapppermissions"><code>getAppPermissions</code><a class="headerlink" href="#getapppermissions" title="Permanent link">&para;</a></h3>
+<p>Dummy function, always returns <code>9355263</code>.</p>
+<h3 id="getcounters"><code>getCounters</code> 🔰<a class="headerlink" href="#getcounters" title="Permanent link">&para;</a></h3>
+<p>Returns the counters of Unread <code>Messages</code>, <code>Notifications</code> and <code>Friends</code> Requests.</p>
+<h2 id="audio">Audio<a class="headerlink" href="#audio" title="Permanent link">&para;</a></h2>
+<h3 id="getbyid"><code>getById</code> 🔰<a class="headerlink" href="#getbyid" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audios</code>, <code>hash</code>, <code>need_user</code></p>
+<p>Returns audios objects from its ids (like X_Y). With <code>need_user</code> = 1 returns audio's owner. </p>
+<p><code>hash</code> allows to get decryption keys</p>
+<h3 id="islagtrain"><code>isLagtrain</code><a class="headerlink" href="#islagtrain" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audio_id</code></p>
+<p>Is this a <a href="https://www.youtube.com/watch?v=UnIhRpIT7nc">Lagtrain</a>?</p>
+<h3 id="getrecommendations"><code>getRecommendations</code> 🔰<a class="headerlink" href="#getrecommendations" title="Permanent link">&para;</a></h3>
+<p>Dummy.</p>
+<h3 id="getpopular"><code>getPopular</code> 🔰<a class="headerlink" href="#getpopular" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>genre_id</code>, <code>genre_str</code>, <code>offset</code>, <code>count</code>, <code>hash</code></p>
+<p>Returns popular audios by its genre (<code>genre_id</code>, <code>genre_str</code>)</p>
+<h3 id="getfeed"><code>getFeed</code> 🔰<a class="headerlink" href="#getfeed" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>genre_id</code>, <code>genre_str</code>, <code>offset</code>, <code>count</code>, <code>hash</code></p>
+<p>Same as <code>getPopular</code>.</p>
+<h3 id="search"><code>search</code> 🔰<a class="headerlink" href="#search" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>q</code>, <em><code>auto_complete</code></em>, <code>lyrics</code>, <code>performer_only</code>, <code>sort</code>, <em><code>search_own</code></em>, <code>offset</code>, <code>count</code>, <code>hash</code></p>
+<p>Global search for audios.
+<code>lyrics</code> — on 1 returns audios only with lyrics
+<code>performer_only</code> — on 1 searches by performer
+<code>sort</code> — on 0 — sort by creation time, on 1 — by length, on 2 — by listens</p>
+<h3 id="getcount"><code>getCount</code> 🔰<a class="headerlink" href="#getcount" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>owner_id</code>, <code>uploaded_only</code></p>
+<p>Returns collection size of user or club. On <code>uploaded_only</code> = 1 returns count of uploaded audios by user.</p>
+<h3 id="get"><code>get</code> 🔰<a class="headerlink" href="#get" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>owner_id</code>, <code>album_id</code>, <code>audio_ids</code>, <code>need_user</code>, <code>offset</code>, <code>count</code>, <code>uploaded_only</code>, <code>need_seed</code>, <code>shuffle_seed</code>, <code>shuffle</code>, <code>hash</code></p>
+<p>Returns audios.
+With <code>owner_id</code> returns user's or group's collection.</p>
+<p>With <code>owner_id</code> and <code>uploaded_only</code> returns uploaded by user audios</p>
+<p>With <code>album_id</code> returns audios from playlist.</p>
+<p>With <code>audio_ids</code> returns audios by ids.</p>
+<p>With <code>need_user</code> in audios objects returns "user".</p>
+<p>With <code>shuffle</code> = 1 enables shuffling. On <code>need_seed</code> = 1 you can set your seed in <code>shuffle_seed</code></p>
+<h3 id="getlyrics"><code>getLyrics</code> 🔰<a class="headerlink" href="#getlyrics" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>lyrics_id</code></p>
+<p>Returns audios lyrics.</p>
+<h3 id="beacon"><code>beacon</code> 🔰<a class="headerlink" href="#beacon" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>aid</code>, <code>gid</code></p>
+<p>Broadcasts audio to status. If <code>gid</code> is set, broadcasts audio to group (not visible in the interface)</p>
+<h3 id="setbroadcast"><code>setBroadcast</code> 🔰<a class="headerlink" href="#setbroadcast" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audio</code>, <code>target_ids</code></p>
+<p>Sets audio broadcast to groups.</p>
+<h3 id="getbroadcastlist"><code>getBroadcastList</code> 🔰<a class="headerlink" href="#getbroadcastlist" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>filter</code>, <em><code>active</code></em>, <code>hash</code></p>
+<p>Returns friends/groups that currently broadcasting music.</p>
+<p>On <code>filter</code> = all returns friends and groups.
+On <code>filter</code> = friends returns only friends.
+При <code>filter</code> = groups returns only groups.</p>
+<h3 id="edit"><code>edit</code> 🔰<a class="headerlink" href="#edit" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>owner_id</code>, <code>audio_id</code>, <code>artist</code>, <code>title</code>, <code>text</code>, <code>genre_id</code>, <code>genre_str</code>, <code>no_search</code></p>
+<p>Edit the song.
+<code>artist</code> — song's author
+<code>title</code> — song's title
+<code>text</code> — song's lyrics
+<code>genre_id</code> — genre_id
+<code>genre_str</code> — genre name
+<code>no_search</code> — is audio can found via search?</p>
+<h3 id="add"><code>add</code> 🔰<a class="headerlink" href="#add" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audio_id</code>, <code>owner_id</code>, <code>group_id</code>, <em><code>album_id</code></em></p>
+<p>Add audio (<code>audio_id</code>, <code>owner_id</code>) to users or club (<code>group_id</code>) collection</p>
+<h3 id="delete"><code>delete</code> 🔰<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audio_id</code>, <code>owner_id</code>, <code>group_id</code></p>
+<p>Delete audio from user's collection (or club's).</p>
+<h3 id="restore"><code>restore</code> 🔰<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>audio_id</code>, <code>owner_id</code>, <code>group_id</code>, <code>hash</code></p>
+<p>Same as audio.add, but also returns audio object.</p>
+<h3 id="getalbums"><code>getAlbums</code> 🔰<a class="headerlink" href="#getalbums" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <code>offset</code>, <code>count</code>, <code>drop_private</code></p>
+<p>Returns playlists from user's collection.
+On <code>drop_private</code> skips private playlists</p>
+<h3 id="searchalbums"><code>searchAlbums</code> 🔰<a class="headerlink" href="#searchalbums" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>query</code></strong>, <code>offset</code>, <code>limit</code>, <code>drop_private</code></p>
+<p>Global search by albums.
+On <code>drop_private</code> skips private albums.</p>
+<h3 id="addalbum"><code>addAlbum</code> 🔰<a class="headerlink" href="#addalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>title</code>, <code>description</code>, <code>group_id</code></p>
+<p>Creates new playlist and adds to your collection.</p>
+<p>On <code>group_id</code> creates playlist in group.</p>
+<h3 id="editalbum"><code>editAlbum</code> 🔰<a class="headerlink" href="#editalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>album_id</code></strong>, <code>title</code>, <code>description</code></p>
+<p>Edits playlist's title and descriptions.</p>
+<h3 id="deletealbum"><code>deleteAlbum</code> 🔰<a class="headerlink" href="#deletealbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>album_id</code></p>
+<p>Completely deletes the playlist.</p>
+<h3 id="movetoalbum"><code>moveToAlbum</code> 🔰<a class="headerlink" href="#movetoalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>album_id</code>, <code>audio_ids</code></p>
+<p>Adds audios to playlist.</p>
+<h3 id="copytoalbum"><code>copyToAlbum</code> 🔰<a class="headerlink" href="#copytoalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>album_id</code>, <code>audio_ids</code></p>
+<p>Same as audio.moveToAlbum.</p>
+<h3 id="removefromalbum"><code>removeFromAlbum</code> 🔰<a class="headerlink" href="#removefromalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>album_id</code>, <code>audio_ids</code></p>
+<p>Deletes audios from album.</p>
+<h3 id="bookmarkalbum"><code>bookmarkAlbum</code> 🔰<a class="headerlink" href="#bookmarkalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>id</code></p>
+<p>Adds album to your collection.
+Returns 1 on success.</p>
+<h3 id="unbookmarkalbum"><code>unbookmarkAlbum</code> 🔰<a class="headerlink" href="#unbookmarkalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>id</code></p>
+<p>Deletes album from your collection.
+Returns 1 on success.</p>
+<h2 id="board">Board<a class="headerlink" href="#board" title="Permanent link">&para;</a></h2>
+<h3 id="addtopic"><code>addTopic</code> 🔰<a class="headerlink" href="#addtopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>groupd_id</code></strong>, <strong><code>title</code></strong>, <code>text</code>, <code>from_group</code>, <code>attachments</code></p>
+<p>Creates the topic in the group.</p>
+<h3 id="closetopic"><code>closeTopic</code> 🔰<a class="headerlink" href="#closetopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>groupd_id</code></strong>, <strong><code>topic_id</code></strong></p>
+<p>Closes topic in the group.</p>
+<h3 id="createcomment"><code>createComment</code> 🔰<a class="headerlink" href="#createcomment" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>groupd_id</code></strong>, <strong><code>topic_id</code></strong>, <code>message</code>, <code>from_group</code>, <code>attachments</code></p>
+<p>Creates comment in the topic.</p>
+<h3 id="deletecomment"><code>deleteComment</code> 🔰<a class="headerlink" href="#deletecomment" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>comment_id</code></strong>, <code>group_id</code>, <code>topic_id</code></p>
+<p>Deletes comment from the topic.</p>
+<h3 id="deletetopic"><code>deleteTopic</code> 🔰<a class="headerlink" href="#deletetopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong></p>
+<p>Deletes group's topic.</p>
+<h3 id="edittopic"><code>editTopic</code> 🔰<a class="headerlink" href="#edittopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong>, <strong><code>title</code></strong></p>
+<p>Edit topic's title</p>
+<h3 id="fixtopic"><code>fixTopic</code> 🔰<a class="headerlink" href="#fixtopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong></p>
+<p>Pins the topic. IDK why it was named "fix topic" xd</p>
+<h3 id="getcomments"><code>getComments</code> 🔰<a class="headerlink" href="#getcomments" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong>, <code>need_likes</code>, <code>offset</code>, <code>count</code>, <code>extended</code>, <code>sort</code> (asc or desc)</p>
+<p>Returns array with topic's comments. If you want to return likes info, set need_likes to 1.</p>
+<h3 id="gettopics"><code>getTopics</code> 🔰<a class="headerlink" href="#gettopics" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_ids</code></strong>, <code>order</code>, <code>offset</code>, <code>count</code>, <code>extended</code>, <code>preview</code>, <code>preview_length</code></p>
+<p>Returns topics of the group.</p>
+<h3 id="opentopic"><code>openTopic</code> 🔰<a class="headerlink" href="#opentopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong></p>
+<p>Opens closed topic.</p>
+<h3 id="restorecomment"><code>restoreComment</code> 🔰<a class="headerlink" href="#restorecomment" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong>, <strong><code>comment_id</code></strong></p>
+<p>Dummy</p>
+<h3 id="unfixtopic"><code>unfixTopic</code> 🔰<a class="headerlink" href="#unfixtopic" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>topic_id</code></strong></p>
+<p>Unpins the topic.</p>
+<h2 id="friends">Friends<a class="headerlink" href="#friends" title="Permanent link">&para;</a></h2>
+<h3 id="get_1"><code>get</code><a class="headerlink" href="#get_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <code>fields</code>, <code>offset</code>, <code>count</code></p>
+<p>Returns the user's friend ID list with count.</p>
+<h3 id="getrequests"><code>getRequests</code> 🔰<a class="headerlink" href="#getrequests" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>fields</code>, <code>offset</code>, <code>count</code>, <code>extended</code></p>
+<p>Returns current user's requests.</p>
+<h3 id="getlists"><code>getLists</code> 🔰<a class="headerlink" href="#getlists" title="Permanent link">&para;</a></h3>
+<p>Dummy function, always returns 0 items.</p>
+<h3 id="edit-deletelist-editlist"><code>edit</code>, <code>deleteList</code>, <code>editList</code> 🔰<a class="headerlink" href="#edit-deletelist-editlist" title="Permanent link">&para;</a></h3>
+<p>Dummy functions, always return <code>1</code>.</p>
+<h3 id="add_1"><code>add</code> 🔰<a class="headerlink" href="#add_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong></p>
+<p>Sends a requests to another user or adds user to friends list.</p>
+<p>Returns: <code>1</code> (friend request sent) or <code>2</code> (request from user approved)</p>
+<h3 id="delete_1"><code>delete</code> 🔰<a class="headerlink" href="#delete_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong></p>
+<p>Removes the user from friend list or the request.</p>
+<p>Returns <code>1</code> if successed, otherwise will throw an error.</p>
+<h3 id="arefriends"><code>areFriends</code> 🔰<a class="headerlink" href="#arefriends" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_ids</code></strong></p>
+<p>Checks the friendship status with other specified users.</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;response&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;friend_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;friend_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;friend_status&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="gifts">Gifts<a class="headerlink" href="#gifts" title="Permanent link">&para;</a></h2>
+<h3 id="get_2"><code>get</code> 🔰<a class="headerlink" href="#get_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <code>offset</code>, <code>count</code></p>
+<p>Returns user's gifts</p>
+<h3 id="send"><code>send</code> 🔰<a class="headerlink" href="#send" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <strong><code>gift_id</code></strong>, <code>message</code>, <code>privacy</code></p>
+<p>Sends gift to user. </p>
+<h3 id="getcategories"><code>getCategories</code> 🔰<a class="headerlink" href="#getcategories" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>extended</code>, <code>page</code></p>
+<p>Returns the gift categories of instance. If extended = 1, returns localized strings.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Non-standard method, please be aware if you'll gonna make your thing compatible with real VK.</p>
+</div>
+<h3 id="getgiftsincategory"><code>getGiftsInCategory</code> 🔰<a class="headerlink" href="#getgiftsincategory" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>id</code></strong>, <code>page</code></p>
+<p>Returns the gifts from category.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Non-standard method, please be aware if you'll gonna make your thing compatible with real VK.</p>
+</div>
+<h2 id="groups">Groups<a class="headerlink" href="#groups" title="Permanent link">&para;</a></h2>
+<h3 id="create"><code>create</code> 🔰<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>title</code></strong>, <code>description</code></p>
+<p>Creates new group.</p>
+<h3 id="edit_1"><code>edit</code> 🔰<a class="headerlink" href="#edit_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <code>title</code>, <code>description</code>, <code>screen_name</code>, <code>website</code>, <code>wall</code>, <code>topics</code>, <code>adminlist</code>, <code>topicsAboveWall</code>, <code>hideFromGlobalFeed</code></p>
+<ul>
+<li><code>title</code>, <code>description</code>, <code>screen_name</code> and <code>website</code> are strings</li>
+<li><code>wall</code>, <code>topics</code>, <code>adminlist</code>, <code>topicsAboveWall</code>, <code>hideFromGlobalFeed</code> are integers</li>
+</ul>
+<p>Edits group's settings.</p>
+<h3 id="get_3"><code>get</code> 🔰<a class="headerlink" href="#get_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>user_id</code>, <code>fields</code>, <code>offset</code>, <code>count</code> <em>6</em></p>
+<p>Returns the user's groups list with count.</p>
+<p><code>fields</code>: <code>verified</code>, <code>has_photo</code>, <code>photo_max_orig</code>, <code>photo_max</code>, <code>photo_50</code>, <code>photo_100</code>, <code>photo_200</code>, <code>photo_200_orig</code>, <code>photo_400_orig</code>, <code>members_count</code></p>
+<h3 id="getbyid_1"><code>getById</code> 🔰<a class="headerlink" href="#getbyid_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>groups_id</code></strong> or <strong><code>group_id</code></strong>, <code>fields</code></p>
+<p>Returns the info about group(s).</p>
+<p><code>fields</code>: <code>verified</code>, <code>has_photo</code>, <code>photo_max_orig</code>, <code>photo_max</code>, <code>photo_50</code>, <code>photo_100</code>, <code>photo_200</code>, <code>photo_200_orig</code>, <code>photo_400_orig</code>, <code>members_count</code>, <code>site</code>, <code>description</code>, <code>contacts</code>, <code>can_post</code>, <code>is_member</code></p>
+<h3 id="getmembers"><code>getMembers</code> 🔰<a class="headerlink" href="#getmembers" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <code>sort</code>, <code>offset</code>, <code>count</code>, <code>fields</code></p>
+<p>Returns group's members.</p>
+<p><code>fields</code>: <code>bdate</code>, <code>can_post</code>, <code>can_see_all_posts</code>, <code>can_see_audio</code>, <code>can_write_private_message</code>,<code>city</code>, <code>common_count</code>, <code>connections</code>, <code>contacts</code>,<code>country</code>, <code>domain</code>, <code>education</code>, <code>has_mobile</code>, <code>last_seen</code>, <code>lists</code>, <code>online</code>, <code>online_mobile</code>,<code>photo_100</code>, <code>photo_200</code>, <code>photo_200_orig</code>,<code>photo_400_orig</code>, <code>photo_50</code>, <code>photo_max</code>, <code>photo_max_orig</code>, <code>relation</code>, <code>relatives</code>, <code>schools</code>, <code>sex</code>, <code>site</code>, <code>status</code>, <code>universities</code></p>
+<h3 id="getsettings"><code>getSettings</code> 🔰<a class="headerlink" href="#getsettings" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong></p>
+<p>Available only for group admins. Returns group's settings.</p>
+<h3 id="ismember"><code>isMember</code> 🔰<a class="headerlink" href="#ismember" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong>, <strong><code>user_id</code></strong> or <strong><code>user_ids</code></strong>, <code>extended</code></p>
+<p>Returns 1 if user is member of the group. If extended = 1, returns some useless fields.</p>
+<h3 id="search_1"><code>search</code><a class="headerlink" href="#search_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>q</code></strong>, <code>offset</code>, <code>count</code></p>
+<p>Searches for groups.</p>
+<h3 id="join"><code>join</code> 🔰<a class="headerlink" href="#join" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong></p>
+<p>Joins the group. Returns 1 on success.</p>
+<h3 id="leave"><code>leave</code> 🔰<a class="headerlink" href="#leave" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong></p>
+<p>Leaves the group. Returns 1 on success.</p>
+<h3 id="remove"><code>remove</code> 🔰<a class="headerlink" href="#remove" title="Permanent link">&para;</a></h3>
+<p>Dummy.</p>
+<h2 id="likes">Likes<a class="headerlink" href="#likes" title="Permanent link">&para;</a></h2>
+<h3 id="add_2"><code>add</code> 🔰<a class="headerlink" href="#add_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>type</code>, <code>owner_id</code>, <code>item_id</code></p>
+<p>Likes the object. Returns count of likes.</p>
+<p><code>type</code>: <code>post</code></p>
+<h3 id="delete_2"><code>delete</code> 🔰<a class="headerlink" href="#delete_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>type</code>, <code>owner_id</code>, <code>item_id</code></p>
+<p>Removes like from the object. Returns count of likes.</p>
+<p><code>type</code>: <code>post</code></p>
+<h3 id="isliked"><code>isLiked</code> 🔰<a class="headerlink" href="#isliked" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>user_id</code>, <code>type</code>, <code>owner_id</code>, <code>item_id</code></p>
+<p>Checks if user liked the object or not.</p>
+<p><code>type</code>: <code>post</code></p>
+<h2 id="messages">Messages<a class="headerlink" href="#messages" title="Permanent link">&para;</a></h2>
+<h3 id="getbyid_2"><code>getById</code> 🔰<a class="headerlink" href="#getbyid_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>message_ids</code></strong>, <code>preview_length</code>, <code>extended</code></p>
+<p>Returns the messages by it's IDs.</p>
+<h3 id="send_1"><code>send</code> 🔰<a class="headerlink" href="#send_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <strong><code>peer_id</code></strong>, <code>domain</code>, <code>user_ids</code>, <code>message</code></p>
+<p>Sends a message to user. Will return the message's ID, if successed.</p>
+<p>Please be aware that this method will trigger <code>setOnline</code> method. To avoid this, simply add <code>forGodSakePleaseDoNotReportAboutMyOnlineActivity</code> as field.</p>
+<h3 id="delete_3"><code>delete</code> 🔰<a class="headerlink" href="#delete_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>message_ids</code></strong></p>
+<p>Deletes the message.</p>
+<h3 id="restore_1"><code>restore</code> 🔰<a class="headerlink" href="#restore_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>message_ids</code></strong></p>
+<p>Restores deleted message.</p>
+<h3 id="getconversations"><code>getConversations</code> 🔰<a class="headerlink" href="#getconversations" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>offset</code>, <code>count</code> <em>20</em>, <code>filter</code>, <code>extended</code></p>
+<p>Returns user's chat list.</p>
+<h3 id="getconversationsbyid"><code>getConversationsById</code> 🔰<a class="headerlink" href="#getconversationsbyid" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>peer_ids</code></strong>, <code>extended</code>, <code>fields</code></p>
+<p>Returns the user's chats by their peer IDs.</p>
+<h3 id="gethistory"><code>getHistory</code> 🔰<a class="headerlink" href="#gethistory" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>offset</code>, <code>count</code> <em>20</em>, <code>user_id</code>, <code>peer_id</code>, <code>start_message_id</code>, <code>rev</code></p>
+<p>Returns chat's history.</p>
+<h3 id="getlongpollhistory"><code>getLongPollHistory</code> 🔰<a class="headerlink" href="#getlongpollhistory" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>ts</code>, <code>preview_length</code>, <code>events_limit</code>, <code>msgs_limit</code></p>
+<p>Return's LongPoll history.</p>
+<p><strong>Check <a href="https://vk.com/dev/using_longpoll">this</a> if you don't know what is a LongPoll.</strong></p>
+<h3 id="getlongpollserver"><code>getLongPollServer</code> 🔰<a class="headerlink" href="#getlongpollserver" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>need_pts</code>, <code>lp_version</code>, <code>group_id</code></p>
+<p>Returns the address to LongPoll server.</p>
+<p><strong>Check <a href="https://vk.com/dev/using_longpoll">this</a> if you don't know what is a LongPoll.</strong></p>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<h3 id="add_3"><code>add</code> 🔰<a class="headerlink" href="#add_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>title</code></strong>, <strong><code>text</code></strong>, <code>privacy</code>, <code>comment_privacy</code>, <code>privacy_view</code>, <code>privacy_comment</code></p>
+<p>Creates new note.</p>
+<h3 id="createcomment_1"><code>createComment</code> 🔰<a class="headerlink" href="#createcomment_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>note_id</code></strong>, <strong><code>owner_id</code></strong>, <strong><code>message</code></strong>, <code>reply_to</code>, <code>attachments</code></p>
+<p>Creates new comment under note.</p>
+<h3 id="delete_4"><code>delete</code> 🔰<a class="headerlink" href="#delete_4" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>note_id</code></strong></p>
+<p>Deletes note.</p>
+<h3 id="deletecomment_1"><code>deleteComment</code> 🔰<a class="headerlink" href="#deletecomment_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>comment_id</code></strong>, <code>owner_id</code></p>
+<p>Deletes comment under note.</p>
+<h3 id="edit_2"><code>edit</code> 🔰<a class="headerlink" href="#edit_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>note_id</code></strong>, <code>title</code>, <code>text</code>, <code>privacy</code>, <code>comment_privacy</code>, <code>privacy_view</code>, <code>privacy_comment</code></p>
+<p>Edits note.</p>
+<h3 id="get_4"><code>get</code> 🔰<a class="headerlink" href="#get_4" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <code>note_ids</code>, <code>offset</code>, <code>count</code>, <code>sort</code></p>
+<p>Returns user's notes. If sort=1, returns notes in reverse order</p>
+<h3 id="getbyid_3"><code>getById</code> 🔰<a class="headerlink" href="#getbyid_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>note_id</code></strong>, <strong><code>owner_id</code></strong>, <code>need_wiki</code></p>
+<p>Returns note by id.</p>
+<h3 id="getcomments_1"><code>getComments</code> 🔰<a class="headerlink" href="#getcomments_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>note_id</code></strong>, <strong><code>owner_id</code></strong>, <code>sort</code>, <code>offset</code>, <code>count</code></p>
+<p>Returns note's comments</p>
+<h2 id="ovk-aka-openvk-specific-methods">Ovk (aka OpenVK specific methods)<a class="headerlink" href="#ovk-aka-openvk-specific-methods" title="Permanent link">&para;</a></h2>
+<h3 id="version"><code>version</code><a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
+<p>Returns the OpenVK version installed on an instance.</p>
+<h3 id="test"><code>test</code><a class="headerlink" href="#test" title="Permanent link">&para;</a></h3>
+<p>Returns the information about access token.</p>
+<h3 id="chickenwings"><code>chickenWings</code><a class="headerlink" href="#chickenwings" title="Permanent link">&para;</a></h3>
+<p>Returns <code>крылышки</code> string.</p>
+<h3 id="aboutinstance"><code>aboutInstance</code><a class="headerlink" href="#aboutinstance" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>fields</code></strong>, <code>admin_fields</code>, <code>group_fields</code>.</p>
+<p>Returns information about the instance, including stats, administrators, most popular groups and links.</p>
+<p><code>fields</code>: <code>statistics</code>, <code>administrators</code>, <code>popular_groups</code>, <code>links</code></p>
+<p><code>admin_fields</code> are the same as with <code>Users.get</code> function.<code>group_fields</code> are the same as with <code>Groups.getById</code> function.</p>
+<h2 id="photos">Photos<a class="headerlink" href="#photos" title="Permanent link">&para;</a></h2>
+<h3 id="get_5"><code>get</code><a class="headerlink" href="#get_5" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>album_id</code></strong>, <code>photo_ids</code>, <code>extended</code>, <code>photo_sizes</code>, <code>offset</code>, <code>count</code></p>
+<p>Returns a list of photos inside the album.</p>
+<h3 id="createalbum"><code>createAlbum</code> 🔰<a class="headerlink" href="#createalbum" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>title</code></strong>, <code>group_id</code>, <code>description</code></p>
+<p>Creates new album. If you want to create new group's album, set <code>group_id</code>.</p>
+<h3 id="editalbum_1"><code>editAlbum</code> 🔰<a class="headerlink" href="#editalbum_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>album_id</code></strong>, <strong><code>owner_id</code></strong>, <code>title</code>, <code>description</code></p>
+<p>Edits album.</p>
+<h3 id="getalbums_1"><code>getAlbums</code> 🔰<a class="headerlink" href="#getalbums_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <code>offset</code> <em>0</em>, <code>count</code> <em>100</em>, <code>need_system</code> <em>1</em>, <code>need_covers</code> <em>1</em>, <code>photo_sizes</code> <em>0</em></p>
+<p>Returns user's or group's albums. 
+If <code>need_system</code> = 1, returns system albums. 
+If <code>need_covers</code> = 1, returns albums covers
+If <code>photo_sizes</code> = 1, returns covers sizes.</p>
+<h3 id="getbyid_4"><code>getById</code> 🔰<a class="headerlink" href="#getbyid_4" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>photos</code></strong>, <code>extended</code> <em>0</em>, <code>photo_sizes</code> <em>0</em></p>
+<p>Returns photo(s) object(s).</p>
+<h3 id="deletealbum_1"><code>deleteAlbum</code> 🔰<a class="headerlink" href="#deletealbum_1" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>album_id</code></strong>, <code>group_id</code></p>
+<p>Deletes album.</p>
+<h3 id="edit_3"><code>edit</code> 🔰<a class="headerlink" href="#edit_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>photo_id</code></strong>, <code>caption</code></p>
+<p>Edits photo's description.</p>
+<h3 id="delete_5"><code>delete</code> 🔰<a class="headerlink" href="#delete_5" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>photo_id</code></strong>, <code>photos</code></p>
+<p>Deletes photo(s).</p>
+<h3 id="getallcomments"><code>getAllComments</code> 🔰<a class="headerlink" href="#getallcomments" title="Permanent link">&para;</a></h3>
+<p>Not implemented bro</p>
+<h3 id="deletecomment_2"><code>deleteComment</code> 🔰<a class="headerlink" href="#deletecomment_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>comment_id</code></strong></p>
+<p>Deletes comment under photo.</p>
+<h3 id="createcomment_2"><code>createComment</code> 🔰<a class="headerlink" href="#createcomment_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>photo_id</code></strong>, <strong><code>message</code></strong>, <code>attachments</code>, <code>from_group</code></p>
+<p>Creates comment under photo.</p>
+<h3 id="getall"><code>getAll</code> 🔰<a class="headerlink" href="#getall" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <code>extended</code>, <code>offset</code>, <code>count</code>, <code>photo_sizes</code></p>
+<p>Returns every user's photo. </p>
+<h3 id="getcomments_2"><code>getComments</code> 🔰<a class="headerlink" href="#getcomments_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>photo_id</code></strong>, <code>need_likes</code>, <code>offset</code>, <code>count</code>, <code>extended</code>, <code>fields</code></p>
+<p>Returns comments under photo.</p>
+<h3 id="getuploadserver"><code>getUploadServer</code> 🔰<a class="headerlink" href="#getuploadserver" title="Permanent link">&para;</a></h3>
+<p>Returns the server address for sending photos in a POST request.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>After receiving the address of the attachment sending server, you must specify the <code>Content-Type</code> header with the value <code>multi-part/form-data</code> in the POST request itself, as well as the file in the <code>photo</code> data part.</p>
+</div>
+<h3 id="getownerphotouploadserver"><code>getOwnerPhotoUploadServer</code> 🔰<a class="headerlink" href="#getownerphotouploadserver" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong></p>
+<p>Returns the server address for sending wall owner photos in a POST request.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>After receiving the address of the attachment sending server, you must specify the <code>Content-Type</code> header with the value <code>multi-part/form-data</code> in the POST request itself, as well as the file in the <code>photo</code> data part.</p>
+</div>
+<h3 id="getwalluploadserver"><code>getWallUploadServer</code> 🔰<a class="headerlink" href="#getwalluploadserver" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>group_id</code></strong></p>
+<p>Returns the server address for sending group photos for post in a POST request.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>After receiving the address of the attachment sending server, you must specify the <code>Content-Type</code> header with the value <code>multi-part/form-data</code> in the POST request itself, as well as the file in the <code>photo</code> data part.</p>
+</div>
+<h3 id="save"><code>save</code><a class="headerlink" href="#save" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>photos_list</code></strong>, <strong><code>hash</code></strong></p>
+<p>Saves photos.</p>
+<h3 id="saveownerphoto"><code>saveOwnerPhoto</code><a class="headerlink" href="#saveownerphoto" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>photo</code></strong>, <strong><code>hash</code></strong></p>
+<p>Saves profile photo.</p>
+<h3 id="savewallphoto"><code>saveWallPhoto</code><a class="headerlink" href="#savewallphoto" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>photo</code></strong>, <strong><code>hash</code></strong></p>
+<p>Saves wall photo.</p>
+<h2 id="polls">Polls<a class="headerlink" href="#polls" title="Permanent link">&para;</a></h2>
+<h3 id="getbyid_5"><code>getById</code><a class="headerlink" href="#getbyid_5" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>poll_id</code></strong>, <code>extended</code>, <code>fields</code></p>
+<p>Returns poll info. Formatting is the same as it would be in Wall's methods.</p>
+<h3 id="addvote"><code>addVote</code> 🔰<a class="headerlink" href="#addvote" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>poll_id</code></strong>, <strong><code>answers_ids</code></strong></p>
+<p>Adds a vote to poll.</p>
+<h3 id="deletevote"><code>deleteVote</code> 🔰<a class="headerlink" href="#deletevote" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>poll_id</code></strong></p>
+<p>Removes the vote, except if it is not revotable or it is locked.</p>
+<h2 id="status">Status<a class="headerlink" href="#status" title="Permanent link">&para;</a></h2>
+<h3 id="get_6"><code>get</code> 🔰<a class="headerlink" href="#get_6" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong></p>
+<p>Returns user's status. If <code>user_id</code> not passed, returns your's status.</p>
+<h3 id="set"><code>set</code> 🔰<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>text</code></strong></p>
+<p>Changes your status.</p>
+<h2 id="utils">Utils<a class="headerlink" href="#utils" title="Permanent link">&para;</a></h2>
+<h3 id="getservertime"><code>getServerTime</code><a class="headerlink" href="#getservertime" title="Permanent link">&para;</a></h3>
+<p>Returns the time on the server.</p>
+<h2 id="users">Users<a class="headerlink" href="#users" title="Permanent link">&para;</a></h2>
+<h3 id="get_7"><code>get</code><a class="headerlink" href="#get_7" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_ids</code></strong>, <code>fields</code>, <code>offset</code>, <code>count</code>.</p>
+<p>Returns information about user or users.</p>
+<p><code>fields</code>: <code>verified</code>, <code>sex</code> (not the orientation but the gender), <code>has_photo</code>, <code>photo_max_orig</code>, <code>photo_max</code>, <code>photo_50</code>, <code>photo_100</code>, <code>photo_200</code>, <code>photo_200_orig</code>, <code>photo_400_orig</code>, <code>status</code>, <code>screen_name</code> (aka short url), <code>friend_status</code>, <code>last_seen</code>, <code>music</code>, <code>movies</code>, <code>tv</code>, <code>books</code>, <code>city</code>, <code>interests</code></p>
+<h3 id="getfollowers"><code>getFollowers</code> 🔰<a class="headerlink" href="#getfollowers" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>user_id</code></strong>, <code>fields</code>, <code>offset</code>, <code>count</code> <em>100</em></p>
+<p>Returns the followers of user.</p>
+<h3 id="search_2"><code>search</code><a class="headerlink" href="#search_2" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>q</code></strong>, <code>fields</code>, <code>offset</code>, <code>count</code> <em>100</em>, <code>city</code>, <code>hometown</code>, <code>sex</code>, <code>status</code> <em>(marital status)</em>, <code>online</code>, <code>profileStatus</code>, <code>sort</code>, <code>before</code>, <code>politViews</code>, <code>after</code>, <code>interests</code>, <code>fav_music</code>, <code>fav_films</code>, <code>fav_shows</code>, <code>fav_books</code>, <code>fav_quotes</code></p>
+<p>Searches the users by name, surname or bio, and returns the list.</p>
+<p><code>Fields</code> are the same as with <code>get</code> function.</p>
+<h2 id="wall">Wall<a class="headerlink" href="#wall" title="Permanent link">&para;</a></h2>
+<h3 id="get_8"><code>get</code> 🔰<a class="headerlink" href="#get_8" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <code>offset</code>, <code>count</code> <em>30</em>, <code>extended</code></p>
+<p>Returns the posts on the wall. <code>Extended</code> parameter will also return profile info.</p>
+<h3 id="getbyid_6"><code>getById</code> 🔰<a class="headerlink" href="#getbyid_6" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>posts</code></strong>, <code>fields</code>, <code>extended</code></p>
+<p>Returns post(s) by pretty ID (like 1_3 or 32_3).</p>
+<h3 id="post"><code>post</code> 🔰<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>message</code></strong>, <code>from_group</code>, <code>signed</code>, <code>attachments</code></p>
+<p>Creates new post on wall.</p>
+<p>If you want to attach photo or video, pass the <code>attachments</code> parameter as:
+[type][owner id]_[media id]. For example: photo6_7, video1_1. 
+Remember: you can't attach another's photos or videos.</p>
+<p>This also works in createComment.</p>
+<h3 id="repost"><code>repost</code> 🔰<a class="headerlink" href="#repost" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>object</code></strong>, <code>message</code>, <code>group_id</code></p>
+<p>Reposts (copies) a post to a user wall by pretty ID (like wall-1246_747 or wall6_436).</p>
+<p>If you want to do repost in group, pass group id in group_id</p>
+<h3 id="createcomment_3"><code>createComment</code> 🔰<a class="headerlink" href="#createcomment_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>post_id</code></strong>, <strong><code>message</code></strong>, <code>from_group</code>, <code>attachments</code></p>
+<p>Adds a comment to a post on a user wall or community wall.</p>
+<h3 id="deletecomment_3"><code>deleteComment</code> 🔰<a class="headerlink" href="#deletecomment_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>comment_id</code></strong></p>
+<p>Deletes a comment on a post on a user wall or community wall.</p>
+<h3 id="getcomment"><code>getComment</code> 🔰<a class="headerlink" href="#getcomment" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>comment_id</code></strong>, <code>extended</code>, <code>fields</code></p>
+<p>Returns the info about comment.</p>
+<h3 id="getcomments_3"><code>getComments</code> 🔰<a class="headerlink" href="#getcomments_3" title="Permanent link">&para;</a></h3>
+<p>Fields: <strong><code>owner_id</code></strong>, <strong><code>post_id</code></strong>, <code>need_likes</code>, <code>offset</code>, <code>count</code> <em>10</em>, <code>fields</code>, <code>sort</code>, <code>extended</code></p>
+<p>Returns a list of comments on a post on a user wall or community wall.</p>
+<h2 id="newsfeed">Newsfeed<a class="headerlink" href="#newsfeed" title="Permanent link">&para;</a></h2>
+<h3 id="get_9"><code>get</code> 🔰<a class="headerlink" href="#get_9" title="Permanent link">&para;</a></h3>
+<p>Fields: <code>fields</code>, <code>start_from</code> or <code>offset</code>, <code>count</code>, <code>extended</code></p>
+<p>Returns posts from newsfeed.</p>
+<p>Please be aware that this method will trigger <code>setOnline</code> method. To avoid this, simply add <code>forGodSakePleaseDoNotReportAboutMyOnlineActivity</code> as field.</p>
+<h3 id="getglobal"><code>getGlobal</code> 🔰<a class="headerlink" href="#getglobal" title="Permanent link">&para;</a></h3>
+<p>Same as <code>get</code>, but this time it outputs global feed.</p>
+<h1 id="error">Error<a class="headerlink" href="#error" title="Permanent link">&para;</a></h1>
+<p>If something goes wrong, the server will return you an error like this:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;error_code&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;error_msg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Invalid username or password&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;request_params&quot;</span><span class="p">:</span>
+<span class="w">    </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;grant_type&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;agreatpassword&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;username&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;cooluser@cock.li&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;method&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;internal.acquireToken&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;key&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;oauth&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;value&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      2023-11-17
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2021-2023 OpenVK Team and contributors
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/openvk/openvk" target="_blank" rel="noopener" title="OpenVK on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://t.me/openvk" target="_blank" rel="noopener" title="OpenVK on Telegram" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M248 8C111.033 8 0 119.033 0 256s111.033 248 248 248 248-111.033 248-248S384.967 8 248 8Zm114.952 168.66c-3.732 39.215-19.881 134.378-28.1 178.3-3.476 18.584-10.322 24.816-16.948 25.425-14.4 1.326-25.338-9.517-39.287-18.661-21.827-14.308-34.158-23.215-55.346-37.177-24.485-16.135-8.612-25 5.342-39.5 3.652-3.793 67.107-61.51 68.335-66.746.153-.655.3-3.1-1.154-4.384s-3.59-.849-5.135-.5q-3.283.746-104.608 69.142-14.845 10.194-26.894 9.934c-8.855-.191-25.888-5.006-38.551-9.123-15.531-5.048-27.875-7.717-26.8-16.291q.84-6.7 18.45-13.7 108.446-47.248 144.628-62.3c68.872-28.647 83.183-33.623 92.511-33.789 2.052-.034 6.639.474 9.61 2.885a10.452 10.452 0 0 1 3.53 6.716 43.765 43.765 0 0 1 .417 9.769Z"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+    <a href="https://fosstodon.org/@openvk" target="_blank" rel="noopener me" title="OpenVK on Mastodon" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:openvk@tutanota.com" target="_blank" rel="noopener" title="Mail OpenVK" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
+      
+    
+  </body>
+</html>
